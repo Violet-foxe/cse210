@@ -1,4 +1,4 @@
-class Entry
+public class Entry
 {
     // attributes
     // +_date: string
@@ -11,8 +11,9 @@ class Entry
 
     // behaviors
     // + Display()
-    public void Display()
+    public string Display()
     {
-        Console.WriteLine($"{_date} - {_prompt} \n > {_response}");
+        string entryString = $"\n{_date} - {_prompt} \n > {_response}";
+        return entryString;
     }
 }
