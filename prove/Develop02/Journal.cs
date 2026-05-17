@@ -103,7 +103,6 @@ public class Journal
         }
         _loaded = true;
     }
-
     public string GetPrompt()
     {
         // make list
