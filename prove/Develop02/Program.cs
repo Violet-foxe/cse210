@@ -6,6 +6,7 @@ class Program
     {
         // Console.WriteLine("Hello Develop02 World!");
         Journal journal = new Journal();
+        journal._saved = true;
 
         Console.WriteLine("\nWelcome to the Journal Program!");
         
