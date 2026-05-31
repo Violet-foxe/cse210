@@ -78,3 +78,5 @@ class Program
 // i made a list of scriptures that can be chosen at random from a seperate library file
 // the program only hides words that haven't already been hidden
 // made a hidden add scripture option that lets you input any scripture you want by typing "add"
+    // yes, you can pull from your entries for future memorization. 
+    // Rin, Nak, and Kir are my additions.
