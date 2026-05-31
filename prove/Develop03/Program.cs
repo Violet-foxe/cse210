@@ -7,79 +7,28 @@ class Program
         Console.WriteLine();
         // Console.WriteLine("Hello Develop03 World!");
 
-        // make scriptures
-        List<Scripture> scriptureList = new();
+        // GET SCRIPTURE
+        // search library file
+        string filename = "library.csv";
+        string[] lines = File.ReadAllLines(filename);
 
-        string book = "";
-        int chapter = 0;
-        string verse = "";
-        string sentence = "";
-        Scripture scripture = new Scripture(sentence, book, chapter, verse);
-        // scriptureList.Add(scripture);
+        Random random = new Random();
+        // finds a random index
+        int randomIndex = random.Next(lines.Length);
+        // using that index, choose a random line
+        string randomLine = lines[randomIndex];
 
-        // John 3:16 
-        string book1 = "John";
-        int chapter1 = 3;
-        string verse1 = "16";
-        string sentence1 = "For God so loved the world that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.";
-        Scripture scripture1 = new Scripture(sentence1, book1, chapter1, verse1);
-        scriptureList.Add(scripture1);
+        // uses | as a separator
+        string[] parts = randomLine.Split('|');
 
-        // Proverbs 3:5-6
-        string book2 = "Proverbs";
-        int chapter2 = 3;
-        string verse2 = "5-6";
-        string sentence2 = "Trust in the Lord with all thine heart and lean not unto thine own understanding; in all thy ways acknowledge him, and he shall direct thy paths.";
-        Scripture scripture2 = new Scripture(sentence2, book2, chapter2, verse2);
-        scriptureList.Add(scripture2);
+        // parse the line
+        string book = parts[0];
+        int chapter = int.Parse(parts[1]);
+        string verse = parts[2];
+        string sentence = parts[3];
+        Scripture randomScripture = new Scripture(sentence, book, chapter, verse);
 
-        // 1 Nephi 3:7
-        string book3 = "1 Nephi";
-        int chapter3 = 3;
-        string verse3 = "7";
-        string sentence3 = "And it came to pass that I, Nephi, said unto my father: I will go and do the things which the Lord hath commanded, for I know that the Lord giveth no commandments unto the children of men, save he shall prepare a way for them that they may accomplish the thing which he commandeth them.";
-        Scripture scripture3 = new Scripture(sentence3, book3, chapter3, verse3);
-        scriptureList.Add(scripture3);
-
-        // Doctrine and Covenants 4:1
-        string book4 = "Doctrine and Covenants";
-        int chapter4 = 4;
-        string verse4 = "1";
-        string sentence4 = "Now behold, a marvelous work is about to come forth among the children of men.";
-        Scripture scripture4 = new Scripture(sentence4, book4, chapter4, verse4);
-        scriptureList.Add(scripture4);
-
-        // James 1:5
-        string book5 = "James";
-        int chapter5 = 1;
-        string verse5 = "5";
-        string sentence5 = "If any of you lack wisdom, let him ask of God, that giveth to all men liberally, and upbraideth not; and it shall be given him.";
-        Scripture scripture5 = new Scripture(sentence5, book5, chapter5, verse5);
-        scriptureList.Add(scripture5);
-
-        // Isaiah 1:18
-        string book6 = "Isaiah";
-        int chapter6 = 1;
-        string verse6 = "18";
-        string sentence6 = "Come now, and let us reason together, saith the Lord: though your sins be as scarlet, they shall be as white as snow; though they be red like crimson, they shall be as wool.";
-        Scripture scripture6 = new Scripture(sentence6, book6, chapter6, verse6);
-        scriptureList.Add(scripture6);
-
-        // Alma 32:21
-        string book7 = "Alma";
-        int chapter7 = 32;
-        string verse7 = "21";
-        string sentence7 = "And now as I said concerning faith—faith is not to have a perfect knowledge of things; therefore if ye have faith ye hope for things which are not seen, which are true.";
-        Scripture scripture7 = new Scripture(sentence7, book7, chapter7, verse7);
-        scriptureList.Add(scripture7);
-
-        // choose random scripture
-        // make list of scripture numbers, choose a random one
-        Random rnd = new Random();
-        int index = rnd.Next(scriptureList.Count);
-        Scripture randomScripture = scriptureList[index];
-
-        // display scripture
+        // DISPLAY SCRIPTURE
         string answer = "";
         do
         {
@@ -91,8 +40,29 @@ class Program
             Console.Write("\nPress enter to continue or type 'quit' to finish\n");
             answer = Console.ReadLine();
 
+            // adds a new verse to practice to the library
+            if (answer == "add")
+            {
+                // appends it to the end
+                using (StreamWriter outputFile = new StreamWriter(filename, append: true))
+                {
+                    // each part needed
+                    Console.Write("Book: ");
+                    string addBook = Console.ReadLine();
+                    Console.Write("Chapter #: ");
+                    string addChapter = Console.ReadLine();
+                    Console.Write("Verse #(s): ");
+                    string addVerse = Console.ReadLine();
+                    Console.Write("Content: ");
+                    string addSentence = Console.ReadLine();
+
+                    // send the info to the file
+                    outputFile.WriteLine($"{addBook}|{addChapter}|{addVerse}|{addSentence}");
+                }
+            }
+
             // if not quit, then hide stuff
-            if (answer != "quit")
+            else if (answer != "quit")
             {
                 // hides some of the scripture
                 // will return "quit" if there is nothing more to hide
@@ -103,3 +73,8 @@ class Program
         Console.WriteLine();
     }
 }
+
+// Stretch:
+// i made a list of scriptures that can be chosen at random from a seperate library file
+// the program only hides words that haven't already been hidden
+// made a hidden add scripture option that lets you input any scripture you want by typing "add"
