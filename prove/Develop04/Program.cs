@@ -55,4 +55,4 @@ class Program
         Console.Clear();
     }
 }
-// i've exceeded requirements by adding a new activity about the 54321 technique
+// i've exceeded requirements by adding a new calming activity about the 54321 technique
