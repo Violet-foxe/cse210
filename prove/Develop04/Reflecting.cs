@@ -69,7 +69,7 @@ public class Reflecting : Activity
 
         Console.WriteLine("\nNow ponder on each of the following questions as they related to this experience.");
         Console.Write("You may begin in: ");
-        Timer(9, 1000);
+        Timer(15, 1000);
 
         Console.Clear();
         ForDuration(AskQuestion, _duration);

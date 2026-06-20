@@ -6,7 +6,7 @@ class Program
     {
         // Console.WriteLine("Hello Develop04 World!");
         bool running = true;
-
+        int choice;
         do
         {
             Console.Clear();
@@ -20,7 +20,7 @@ class Program
 
             // get choice
             Console.Write("Select a choice from the menu: ");
-            int choice = int.Parse(Console.ReadLine());
+            choice = int.Parse(Console.ReadLine());
             // Console.WriteLine(choice);
 
             // for each activity

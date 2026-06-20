@@ -35,9 +35,9 @@ public class Activity
         // only works for single digit numbers
         for (int i = number; i > 0; i--)
         {
-            Console.Write(i);
+            Console.Write($"{i:D2}");
             Thread.Sleep(interval);
-            Console.Write("\b \b"); // erase the previous character
+            Console.Write("\b\b  \b\b"); // erase the previous character
         }
     }
     public void Spinner(int seconds)
