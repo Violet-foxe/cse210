@@ -15,8 +15,9 @@ class Program
             Console.WriteLine("Menu Options:" +
             "\n  1. Start breathing activity" +
             "\n  2. Start reflecting activity" +
-            "\n  3. start listing activity" +
-            "\n  4. Quit");
+            "\n  3. Start listing activity" +
+            "\n  4. Start 5-4-3-2-1 calming activity" +
+            "\n  5. Quit");
 
             // get choice
             Console.Write("Select a choice from the menu: ");
@@ -39,6 +40,11 @@ class Program
                 Listing list = new Listing();
                 list.ListingActivity();
             }
+            else if (choice == 4) // listing
+            {
+                Calming calm = new Calming();
+                calm.CalmingActivity();
+            }
             else // quit
             {
                 running = false;
@@ -49,3 +55,4 @@ class Program
         Console.Clear();
     }
 }
+// i've exceeded requirements by adding a new activity about the 54321 technique
