@@ -1,0 +1,7 @@
+1050
+SGoal>life|is a jerk|20|True
+SGoal>go to class|just this one time|20|True
+EGoal>homework|you will always have homework|30|4
+CGoal>talk with people|you bum.|50|200|10|10
+NGoal>living|Stahp, get some help|-10|5
+EGoal>taxes|death and taxes, the two unescapable things in the universe|50|5
