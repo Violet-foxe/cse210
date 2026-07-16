@@ -213,7 +213,7 @@ public class ShapeList
 
 						FlatShapes triangle = new Triangle(sideA, sideB, sideC, color);
 						Console.WriteLine(triangle.DisplayInfo());
-_shapes.Add(triangle);
+						_shapes.Add(triangle);
 
 						choosingTriangle = false;
 					}

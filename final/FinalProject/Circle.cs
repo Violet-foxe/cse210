@@ -1,6 +1,6 @@
 public class Circle : FlatShapes
 {
-    protected double _radius;
+    private double _radius;
     public Circle()
     {
         _radius = 1;
