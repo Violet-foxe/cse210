@@ -12,13 +12,16 @@ public class EqualTriangle : IsoTriangle
         _angleB = 60;
         _angleC = 60;
 
+        _perimeter = CalculatePerimeter();
+        _area = CalculateArea();
+
         _color = "blank";
     }
-    public EqualTriangle(double s, string color) 
+    public EqualTriangle(double side, string color) 
     {
-        _sideA = s;
-        _sideB = s;
-        _sideC = s;
+        _sideA = side;
+        _sideB = side;
+        _sideC = side;
         _height = CalculateHeight();
 
         _angleA = 60;
@@ -29,6 +32,10 @@ public class EqualTriangle : IsoTriangle
     }
     public override string DisplayInfo()
     {
-        return $"Equalateral Triangle: A:{_area}, P:{_perimeter}, C:{_color}";
+        return $"Equalateral Triangle: A:{_area:F2}, P:{_perimeter:F2}, Deg:(all: 60°), C:{_color} ";
+    }
+    public override string GetSaveString()
+    {
+        return $"EqualTriangle|{_sideA},{_color}";
     }
 }

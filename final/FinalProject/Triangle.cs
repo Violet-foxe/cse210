@@ -4,9 +4,9 @@ public class Triangle : FlatShapes
     protected double _sideB;
     protected double _sideC;
     protected double _height;
-    protected double _angleA;
-    protected double _angleB;
-    protected double _angleC;
+    protected double _angleA; //opposite side a
+    protected double _angleB; //opposite side b
+    protected double _angleC; //opposite side c
     public Triangle()
     {
         _sideA = 2;
@@ -48,20 +48,42 @@ public class Triangle : FlatShapes
     }
     public override double CalculateArea()
     {
-        double area = _sideA * _height;
+        double area = (_sideA * _height) / 2;
         return area;
     }
     public List<double> CalculateAngles()
     {
-        double angleA = 50;
-        double angleB = 60;
-        double angleC = 70;
+        double a = _sideA;
+        double b = _sideB;
+        double c = _sideC;
+        // A = cos^-1((b^2 + c^2 -a^2)/(2*b*c))
+        double angleA = Math.Acos((b*b + c*c - a*a) / (2*b*c)) *180.0/Math.PI;
+        // B = cos^-1((a^2 + c^2 -b^2)/(2*a*c))
+        double angleB = Math.Acos((a*a + c*c - b*b) / (2*a*c)) *180.0/Math.PI;
+        // C = cos^-1((a^2 + b^2 -c^2)/(2*a*b))
+        double angleC = Math.Acos((a*a + b*b - c*c) / (2*a*b)) *180.0/Math.PI;
+        
         List<double> angles = [angleA, angleB, angleC];
         return angles;
     }
     public virtual double CalculateHeight()
     {
-        double height = 1;
+        double a = _sideA;
+        double b = _sideB;
+        double c = _sideC;
+        // 
+        double s = (a+b+c) / 2;
+        double ar = Math.Sqrt(s*(s-a)*(s-b)*(s-c));
+        double height = (2.0 * ar) / a;
+
         return height;
+    }
+    public override string DisplayInfo()
+    {
+        return $"Triangle: A:{_area:F2}, P:{_perimeter:F2}, H:{_height:F2} Deg:({_angleA:F2}°, {_angleB:F2}°, {_angleC:F2}°), C:{_color} ";
+    }
+    public override string GetSaveString()
+    {
+        return $"Triangle|{_sideA},{_sideB},{_sideC},{_color}";
     }
 }

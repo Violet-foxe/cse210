@@ -1,0 +1,5 @@
+Square|3,red
+RightTriangle|1,1,orange
+IsoTriangle|1,1,yellow
+EqualTriangle|1,green
+Trapezoid|1,1,1,1,sea

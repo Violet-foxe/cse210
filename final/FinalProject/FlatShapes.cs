@@ -8,12 +8,10 @@ public abstract class FlatShapes
     public abstract double CalculateArea();
     public virtual string DisplayInfo()
     {
-        return $"Shape: A:{_area}, P:{_perimeter}, C:{_color}";
+        return $"Shape: A:{_area:F2}, P:{_perimeter:F2}, C:{_color}";
     }
-    public virtual string ChoseColor()
+    public virtual string GetSaveString()
     {
-        Console.Write("choose color: ");
-        string color = Console.ReadLine();
-        return color;
+        return $"Shape|{_area},{_perimeter},{_color}";
     }
 }

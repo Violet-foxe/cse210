@@ -1,6 +1,6 @@
 public class IsoTriangle : Triangle
 {
-        public IsoTriangle()
+    public IsoTriangle()
     {
         _sideA = 1;
         _sideB = 2;
@@ -24,9 +24,13 @@ public class IsoTriangle : Triangle
         _sideC = side;
         _height = CalculateHeight();
         
-        _angleA = CalculatePoint(baseS, _height);
-        _angleB = CalculateAngle();
-        _angleC = CalculateAngle();
+        List<double> angles = CalculateAngles();
+        _angleA = angles[0];
+        _angleB = angles[1];
+        _angleC = angles[2];
+
+        _area = CalculateArea();
+        _perimeter = CalculatePerimeter();
 
         _color = color;
     }
@@ -35,31 +39,32 @@ public class IsoTriangle : Triangle
         _sideA = baseS;
         _sideB = CalculateSides(height, baseS);
         _sideC = CalculateSides(height, baseS);
+
         _height = height;
-        _angleA = CalculatePoint(baseS, height);
-        _angleB = CalculateAngle();
-        _angleC = CalculateAngle();
+
+        List<double> angles = CalculateAngles();
+        _angleA = angles[0];
+        _angleB = angles[1];
+        _angleC = angles[2];
+        
+        _area = CalculateArea();
+        _perimeter = CalculatePerimeter();
         
         _color = color;
     }
-    public override double CalculateHeight()
-    {
-        double height = 1;
-        return height;
-    }
     public double CalculateSides(double height, double baseS)
     {
-        double side = 1;
+        // cut it in half and it becomes a right triangle.
+        double hb = _sideA / 2;
+        double side = Math.Sqrt(hb*hb + _height*_height);
         return side;
     }
-    public double CalculatePoint(double baseS, double height)
+    public override string DisplayInfo()
     {
-        double point = 50;
-        return point;
-    }  
-    public double CalculateAngle()
+        return $"Isosoles Triangle: A:{_area:F2}, P:{_perimeter:F2} Deg({_angleA:F2}°, {_angleB:F2}°, {_angleC:F2}°), C:{_color} ";
+    }
+    public override string GetSaveString()
     {
-        double angle = 65;
-        return angle;
+        return $"IsoTriangle|{_sideA},{_height},{_color}";
     }
 }
